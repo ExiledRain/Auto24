@@ -26,6 +26,7 @@ public class HelpCommand implements Command{
 
     @Override
     public void execute(Update update) {
+        System.err.println("Got message from chat : " + update.getChatMember() + " ," + update.getMessage().getChatId());
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), HELP_MESSAGE);
     }
 }
