@@ -21,6 +21,7 @@ public class CommandContainer {
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService))
                 .put(STOP.getCommandName(), new StopCommand(sendBotMessageService))
+                .put(MB.getCommandName(),new MBCommand(sendBotMessageService))
                 .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService,extractPageContentService))
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
                 .build();
