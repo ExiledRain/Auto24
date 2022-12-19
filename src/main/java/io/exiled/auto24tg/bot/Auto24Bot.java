@@ -1,6 +1,7 @@
 package io.exiled.auto24tg.bot;
 
 import io.exiled.auto24tg.command.CommandContainer;
+import io.exiled.auto24tg.service.impl.ExtractPageContentServiceImpl;
 import io.exiled.auto24tg.service.impl.SendBotMessageServiceImpl;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,7 @@ public class Auto24Bot extends TelegramLongPollingBot {
     private CommandContainer commandContainer;
 
     public Auto24Bot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), new ExtractPageContentServiceImpl());
     }
 
     @Override

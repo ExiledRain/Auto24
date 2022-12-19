@@ -2,6 +2,7 @@ package io.exiled.auto24tg.command;
 
 import com.google.common.collect.ImmutableMap;
 import io.exiled.auto24tg.service.SendBotMessageService;
+import io.exiled.auto24tg.service.impl.ExtractPageContentServiceImpl;
 
 import static io.exiled.auto24tg.command.CommandName.*;
 
@@ -15,12 +16,12 @@ public class CommandContainer {
     private final ImmutableMap<String, Command> commandMap;
     private final Command unknownCommand;
 
-    public CommandContainer(SendBotMessageService sendBotMessageService) {
+    public CommandContainer(SendBotMessageService sendBotMessageService, ExtractPageContentServiceImpl extractPageContentService) {
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService))
                 .put(STOP.getCommandName(), new StopCommand(sendBotMessageService))
-                .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService))
+                .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService,extractPageContentService))
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
                 .build();
 
